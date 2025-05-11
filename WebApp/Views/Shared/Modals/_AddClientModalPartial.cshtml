@@ -1,0 +1,32 @@
+@model AddClientViewModel
+
+<section id="add-client-modal" class="modal">
+    <div class="card">
+        <div class="card-header">
+            <h3>Add Client</h3>
+            <button class="btn-close" data-type="close" data-target="#add-client-modal"></button>
+        </div>
+        <div class="card-body">
+            <form asp-controller="Clients" asp-action="Add" method="post" enctype="multipart/form-data" novalidate>
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div class="image-preview-container client-image" data-file-upload>
+                        <img class="hide" />
+                        <div class="circle circle-gray">
+                            <i class="fa-duotone fa-solid fa-camera"></i>
+                        </div>
+                        <input asp-for="ClientImage" type="file" accept="image/*" hidden />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Client Name</label>
+                    <input asp-for="ClientName" class="form-input" type="text" required />
+                    <span asp-validation-for="ClientName" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn">Create</button>
+            </form>
+        </div>
+    </div>
+</section>

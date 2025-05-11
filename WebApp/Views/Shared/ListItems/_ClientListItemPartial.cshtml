@@ -1,0 +1,39 @@
+@model ClientViewModel
+
+<div class="client card" data-client-id="@Model.Id">
+    <div class="card-header">
+        <div class="user-image">
+            <img src="@Model.ClientImage" alt="@Model.ClientName" />
+        </div>
+        <h3 class="client-name">@Model.ClientName</h3>
+
+        <div id="client-actions-container">
+            <button type="button" data-type="dropdown" data-target="#client-dropdown-@Model.Id" class="btn-action">
+                <i class="fa-solid fa-ellipsis"></i>
+            </button>
+            <div id="client-dropdown-@Model.Id" class="dropdown">
+                <div class="dropdown-body">
+                    <nav class="dropdown-actions">
+                        <button data-type="modal" data-target="#edit-client-modal" class="dropdown-action">
+                            <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+                            <span>Edit</span>
+                        </button>
+                    </nav>
+                    <div class="divider"></div>
+                    <nav class="dropdown-actions">
+                        <a class="dropdown-action remove" data-id="@Model.Id" href="javascript:void(0)">
+                            <i class="fa-duotone fa-solid fa-trash"></i>
+                            <span>Delete Client</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>@Model.ClientName</p>
+    </div>
+    <div class="card-footer">
+        <button>View Projects</button>
+    </div>
+</div>

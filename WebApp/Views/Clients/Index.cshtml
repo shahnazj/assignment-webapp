@@ -1,0 +1,26 @@
+@model ClientsViewModel
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<div id="clients" class="page">
+    <div class="page-header">
+        <h1>clients</h1>
+        <button type="button" class="btn" data-type="modal" data-target="#add-client-modal">
+            <i class="fa-duotone fa-solid fa-plus"></i>
+            <span>Add Client</span>
+        </button>
+    </div>
+    <section class="client-list">
+        @if (Model.Clients != null && Model.Clients.Any())
+        {
+            @foreach (var client in Model.Clients)
+            {
+                @await Html.PartialAsync("ListItems/_ClientListItemPartial", client)
+            }
+        }
+    </section>
+</div>
+
+@await Html.PartialAsync("Modals/_AddClientModalPartial", Model.AddClientFormData)
+@await Html.PartialAsync("Modals/_EditClientModalPartial", Model.EditClientFormData) 

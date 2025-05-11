@@ -1,0 +1,41 @@
+@model MemberViewModel
+
+<div class="member card" data-member-id="@Model.Id">
+    <div class="card-header">
+        <div class="user-image">
+            <img src="@Model.MemberImage" alt="template member" />
+        </div>
+        <h3 class="member-name">@Model.MemberFirstName @Model.MemberLastName</h3>
+
+        <div id="member-actions-container">
+            <button type="button" data-type="dropdown" data-target="#member-dropdown-@Model.Id" class="btn-action">
+                <i class="fa-solid fa-ellipsis"></i>
+            </button>
+            <div id="member-dropdown-@Model.Id" class="dropdown">
+                <div class="dropdown-body">
+                    <nav class="dropdown-actions">
+                        <button data-type="modal" data-target="#edit-member-modal" class="dropdown-action">
+                            <i class="fa-duotone fa-solid fa-pen-to-square"></i>
+                            <span>Edit</span>
+                        </button>
+                    </nav>
+                    <div class="divider"></div>
+                    <nav class="dropdown-actions">
+                        <a class="dropdown-action remove" data-id="@Model.Id" href="javascript:void(0)">
+                            <i class="fa-duotone fa-solid fa-trash"></i>
+                            <span>Delete Member</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>@Model.MemberJobTitle</p>
+        <p>@Model.MemberEmail</p>
+        <p>@Model.MemberPhone</p>
+    </div>
+    <div class="card-footer">
+        <button>message</button>
+    </div>
+</div>

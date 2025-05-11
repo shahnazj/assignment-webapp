@@ -1,0 +1,45 @@
+@{
+    var consent = Context.Request.Cookies["cookieConsent"];
+}
+
+<div class="cookie-modal" id="cookieModal"
+    style="display: @(string.IsNullOrEmpty(consent) ? "flex" : "none"); z-index: 1000;">
+    <div class="card">
+        <div class="content">
+            <h3>Welcome to Our Website!</h3>
+            <p>We use cookies to enhance your browsing experience and provide personalized content. These small text
+                files help us understand how you use our site and improve our services.</p>
+        </div>
+        <div class="settings">
+            <h4>Your Privacy Preferences</h4>
+            <div class="options">
+                <div class="option">
+                    <label for="essential">Core Features</label>
+                    <input type="checkbox" id="essential" name="essential" checked>
+                </div>
+                <div class="option">
+                    <label for="analytics">Website Analytics</label>
+                    <input type="checkbox" id="analytics" name="analytics">
+                </div>
+                <div class="option">
+                    <label for="marketing">Personalized Content</label>
+                    <input type="checkbox" id="marketing" name="marketing">
+                </div>
+            </div>
+            <button onclick="acceptSelected()">Save Preferences</button>
+        </div>
+    </div>
+</div>
+
+<div class="cookieConsentIcon" onclick="reopenCookieModal()">
+    <i class="fa-solid fa-cookie"></i>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.reopenCookieModal = function () {
+            var modal = document.getElementById('cookieModal');
+            modal.style.display = modal.style.display === 'none' ? 'flex' : 'none';
+        };
+    });
+</script>
